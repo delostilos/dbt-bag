@@ -27,3 +27,31 @@ Happy modeling!
 [0m00:53:27.705965 [debug] [MainThread]: Command `dbt init` succeeded at 00:53:27.705864 after 82.82 seconds
 [0m00:53:27.706340 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11f25d030>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x123a5a8f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x123406a70>]}
 [0m00:53:27.706809 [debug] [MainThread]: Flushing usage events
+[0m00:56:54.752310 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12e5562f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x14990c040>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x14990fee0>]}
+
+
+============================== 00:56:54.755594 | f8e3cbc3-4d0e-4bdf-93f3-69c41065a958 ==============================
+[0m00:56:54.755594 [info ] [MainThread]: Running with dbt=1.8.3
+[0m00:56:54.755975 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'profiles_dir': '/Users/datadenken/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt init', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m00:57:05.450066 [debug] [MainThread]: Starter project path: /opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/dbt/include/starter_project
+[0m00:57:05.463283 [info ] [MainThread]: 
+Your new dbt project "bag_duckdb" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m00:57:05.463821 [info ] [MainThread]: Setting up your profile.
+[0m00:57:09.373584 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 14.662609, "process_user_time": 1.132055, "process_kernel_time": 2.229514, "process_mem_max_rss": "129859584", "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m00:57:09.374054 [debug] [MainThread]: Command `dbt init` succeeded at 00:57:09.373994 after 14.66 seconds
+[0m00:57:09.374277 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12e5562f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x14990c2e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x14990cd30>]}
+[0m00:57:09.374505 [debug] [MainThread]: Flushing usage events
