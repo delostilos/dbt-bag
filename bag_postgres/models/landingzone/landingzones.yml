@@ -1,0 +1,46 @@
+version: 2
+
+sources:
+  - name: lz_typed
+    schema: lz_bag
+    description: Typed landing zone voor BAG, dit is waar een tabulaire data in een typed schema inlegt.
+    config:
+      enabled: true
+    tables:
+      - name: ligplaats
+        columns: 
+          - name: identificatie
+            tests:
+             #- unique
+              - not_null
+      - name: nummeraanduiding
+        columns: 
+          - name: identificatie
+            tests:
+              #- unique
+              - not_null
+      - name: openbareruimte
+      - name: pand
+      - name: standplaats
+      - name: verblijfsobject
+      - name: woonplaats
+  - name: lz_untyped
+    freshness: 
+      warn_after:
+        count: 1
+        period: day
+      error_after:
+        count: 3
+        period: day
+    loaded_at_field: _etl_loaded_at
+    schema: lz_bag
+    description: Untyped landing zone voor BAG, dit is waar een loader rauwe XML-data inlegt. De rauwe XML wordt geparsed naar een tabulair, typed schema.
+    config:
+      enabled: true
+    tables:
+      - name: mutatiebericht
+        columns:
+          - name: id
+          - name: mutatiebericht_xml
+            description: De inhoud (XML) van het mutatiebericht
+          - name: _etl_loaded_at

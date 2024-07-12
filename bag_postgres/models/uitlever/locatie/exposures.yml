@@ -1,0 +1,17 @@
+version: 2
+
+exposures:
+
+  - name: locatie_api
+    type: application
+    maturity: high
+    url: http://localhost:5000/graphiql
+    description: >
+      Locatie GraphQL API
+
+    depends_on:
+      - ref('adres')
+
+    owner:
+      name: Erika Eigenaar
+      email: anita.eigenaar@belastingdienst.nl

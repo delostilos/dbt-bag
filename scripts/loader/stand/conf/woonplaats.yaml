@@ -1,0 +1,51 @@
+name: lz_bag.woonplaats
+path: /sl-bag-extract:bagStand/sl:standBestand/sl:stand/sl-bag-extract:bagObject/Objecten:Woonplaats
+emit: copy_from,truncate
+cols:
+ - name: identificatie
+   path: /Objecten:identificatie
+ - name: naam
+   path: /Objecten:naam
+ - name: geom
+   path: /Objecten:geometrie/Objecten:vlak
+   conv: gml-to-ewkb
+   hide: true
+ - name: status
+   path: /Objecten:status
+ - name: geconstateerd
+   path: /Objecten:geconstateerd
+ - name: documentdatum
+   path: /Objecten:documentdatum
+   type: date
+ - name: documentnummer
+   path: /Objecten:documentnummer
+ - name: voorkomenidentificatie
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:voorkomenidentificatie
+   type: integer
+ - name: beginGeldigheid
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:beginGeldigheid
+   type: date
+ - name: eindGeldigheid
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:eindGeldigheid
+   type: date
+ - name: tijdstipRegistratie
+   path: Objecten:voorkomen/Historie:Voorkomen/Historie:tijdstipRegistratie
+   type: timestamp(3)
+ - name: eindRegistratie
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:eindRegistratie
+   type: timestamp(3)
+ - name: tijdstipInactief
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:tijdstipInactief
+   type: timestamp(3)     
+ - name: tijdstipRegistratieLV
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:BeschikbaarLV/Historie:tijdstipRegistratieLV
+   type: timestamp(3)
+ - name: tijdstipEindRegistratieLV
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:BeschikbaarLV/Historie:tijdstipEindRegistratieLV
+   type: timestamp(3)
+ - name: tijdstipInactiefLV
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:BeschikbaarLV/Historie:tijdstipInactiefLV
+   type: timestamp(3) 
+ - name: tijdstipNietBagLV
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:BeschikbaarLV/Historie:tijdstipNietBagLV
+   type: timestamp(3) 

@@ -1,0 +1,38 @@
+version: 2
+
+models:
+    - name: ligplaats
+      description: Door het bevoegde gemeentelijke orgaan als zodanig aangewezen plaats in het water al dan niet aangevuld met een op de oever aanwezig terrein of een gedeelte daarvan, die bestemd is voor het permanent afmeren van een voor woon-, bedrijfsmatige of recreatieve doeleinden geschikt drijvend object.
+      meta:
+        eigenaar: Kadaster
+        cataloguslink: "https://imbag.github.io/praktijkhandleiding/objecttypen/ligplaats"
+    - name: nummeraanduiding
+      description: Door het bevoegde gemeentelijke orgaan als zodanig toegekende aanduiding van een verblijfsobject, een standplaats of een ligplaats.
+      meta:
+        eigenaar: Kadaster
+        cataloguslink: "https://imbag.github.io/praktijkhandleiding/objecttypen/nummeraanduiding"
+    - name: openbareruimte
+      description: Door het bevoegde gemeentelijke orgaan als zodanig aangewezen en van een naam voorziene buitenruimte die binnen één woonplaats is gelegen.
+      meta:
+        eigenaar: Kadaster
+        cataloguslink: "https://imbag.github.io/praktijkhandleiding/objecttypen/openbareruimte"
+    - name: pand
+      description: Kleinste bij de totstandkoming functioneel en bouwkundig-constructief zelfstandige eenheid die direct en duurzaam met de aarde is verbonden en betreedbaar en afsluitbaar is.
+      meta:
+        eigenaar: Kadaster
+        cataloguslink: "https://imbag.github.io/praktijkhandleiding/objecttypen/pand"
+    - name: standplaats
+      description: Door het bevoegde gemeentelijke orgaan als zodanig aangewezen terrein of gedeelte daarvan dat bestemd is voor het permanent plaatsen van een niet direct en niet duurzaam met de aarde verbonden en voor woon-, bedrijfsmatige, of recreatieve doeleinden geschikte ruimte.
+      meta:
+        eigenaar: Kadaster
+        cataloguslink: "https://imbag.github.io/praktijkhandleiding/objecttypen/standplaats"
+    - name: verblijfsobject
+      description: Kleinste binnen één of meer panden gelegen en voor woon-, bedrijfsmatige, of recreatieve doeleinden geschikte eenheid van gebruik die ontsloten wordt via een eigen afsluitbare toegang vanaf de openbare weg, een erf of een gedeelde verkeersruimte, onderwerp kan zijn van goederenrechtelijke rechtshandelingen en in functioneel opzicht zelfstandig is.
+      meta:
+        eigenaar: Kadaster
+        cataloguslink: "https://imbag.github.io/praktijkhandleiding/objecttypen/verblijfsobject"
+    - name: woonplaats
+      description: Door het bevoegde gemeentelijke orgaan als zodanig aangewezen en van een naam voorzien gedeelte van het grondgebied van de gemeente.
+      meta:
+        eigenaar: Kadaster
+        cataloguslink: "https://imbag.github.io/praktijkhandleiding/objecttypen/woonplaats"

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><VerstrekkingAanAfnemer schemaLocation="http://www.digilevering.nl/digilevering.xsd digilevering.xsd">
+   <datumtijdstempelDigilevering>2022-09-29T10:39:52.767Z</datumtijdstempelDigilevering>
+   <datumtijdstempelLV>2022-09-29T12:39:28.000Z</datumtijdstempelLV>
+   <kenmerkDigilevering>c90983b4-a724-4e04-a871-9658fd8d488a@digilevering.nl</kenmerkDigilevering>
+   <kenmerkLV>31024</kenmerkLV>
+   <versieBerichttype>1.0</versieBerichttype>
+   <abonnement>
+      <naam>BAG 2.0 Digilevering</naam>
+      <versie>1.0</versie>
+   </abonnement>
+   <basisregistratie>LV BAG</basisregistratie>
+   <gebeurtenissoort>
+      <naam>Mutatiebericht</naam>
+      <versie>02</versie>
+   </gebeurtenissoort>
+   <gebeurtenisinhoud>
+      <Bag-gebeurtenis>
+         <gebeurtenisselectie>
+            <Schemanaam>bag-gebeurtenis-selectie-0.2.xsd</Schemanaam>
+            <Schemaversie>0.2</Schemaversie>
+         </gebeurtenisselectie>
+         <inhoud>
+            <mutatieBericht>
+               <dataset>LVBAG</dataset>
+               <inhoud>
+                  <gebied>GEMEENTE</gebied>
+                  <leveringsId>0000000001</leveringsId>
+                  <objectTypen>
+                     <objectType>LIG</objectType>
+                     <objectType>NUM</objectType>
+                  </objectTypen>
+               </inhoud>
+               <mutatieGroep>
+                  <toevoeging>
+                     <wordt>
+                        <bagObject>
+                           <Nummeraanduiding>
+                              <identificatie domein="NL.IMBAG.Nummeraanduiding">5000200000012600</identificatie>
+                              <huisnummer>40</huisnummer>
+                              <postcode>1954LT</postcode>
+                              <typeAdresseerbaarObject>Ligplaats</typeAdresseerbaarObject>
+                              <status>Naamgeving uitgegeven</status>
+                              <geconstateerd>N</geconstateerd>
+                              <documentdatum>2017-01-25</documentdatum>
+                              <documentnummer>55550</documentnummer>
+                              <voorkomen>
+                                 <Voorkomen>
+                                    <voorkomenidentificatie>1</voorkomenidentificatie>
+                                    <beginGeldigheid>2017-01-25</beginGeldigheid>
+                                    <eindGeldigheid>2017-01-25</eindGeldigheid>
+                                    <tijdstipRegistratie>2017-01-25T15:40:42.011</tijdstipRegistratie>
+                                    <eindRegistratie>2017-01-25T15:40:42.011</eindRegistratie>
+                                    <tijdstipInactief>2017-01-25T15:40:42.011</tijdstipInactief>
+                                    <BeschikbaarLV>
+                                       <tijdstipRegistratieLV>2022-09-29T12:39:28.575</tijdstipRegistratieLV>
+                                    </BeschikbaarLV>
+                                 </Voorkomen>
+                              </voorkomen>
+                              <ligtAan>
+                                 <OpenbareRuimteRef domein="NL.IMBAG.Openbareruimte">5000300000000096</OpenbareRuimteRef>
+                              </ligtAan>
+                           </Nummeraanduiding>
+                        </bagObject>
+                     </wordt>
+                  </toevoeging>
+                  <toevoeging>
+                     <wordt>
+                        <bagObject>
+                           <Ligplaats>
+                              <heeftAlsHoofdadres>
+                                 <NummeraanduidingRef domein="NL.IMBAG.Nummeraanduiding">5000200000012600</NummeraanduidingRef>
+                              </heeftAlsHoofdadres>
+                              <voorkomen>
+                                 <Voorkomen>
+                                    <voorkomenidentificatie>1</voorkomenidentificatie>
+                                    <beginGeldigheid>2017-01-25</beginGeldigheid>
+                                    <eindGeldigheid>2017-01-25</eindGeldigheid>
+                                    <tijdstipRegistratie>2017-01-25T15:40:42.011</tijdstipRegistratie>
+                                    <eindRegistratie>2017-01-25</eindRegistratie>
+                                    <tijdstipInactief>2017-01-25</tijdstipInactief>
+                                    <BeschikbaarLV>
+                                       <tijdstipRegistratieLV>2022-09-29T12:39:28.575</tijdstipRegistratieLV>
+                                       <tijdstipEindRegistratieLV>2022-09-29T12:39:28.575</tijdstipEindRegistratieLV>
+                                       <tijdstipInactiefLV>2022-09-29T12:39:28.575</tijdstipInactiefLV>
+                                       <tijdstipNietBagLV>2022-09-29T12:39:28.575</tijdstipNietBagLV>
+                                    </BeschikbaarLV>
+                                 </Voorkomen>
+                              </voorkomen>
+                              <identificatie domein="NL.IMBAG.Ligplaats">5000020000072200</identificatie>
+                              <status>Plaats aangewezen</status>
+                              <geometrie>
+                                 <Polygon srsDimension="2" srsName="urn:ogc:def:crs:EPSG::28992">
+                                    <exterior>
+                                       <LinearRing>
+                                          <posList>210915.2 500800.2 210925.7 500800.2 210925.7 500800.7 210915.2 500800.7 210915.2 500800.2</posList>
+                                       </LinearRing>
+                                    </exterior>
+                                 </Polygon>
+                              </geometrie>
+                              <geconstateerd>N</geconstateerd>
+                              <documentdatum>2017-01-25</documentdatum>
+                              <documentnummer>55550</documentnummer>
+                           </Ligplaats>
+                        </bagObject>
+                     </wordt>
+                  </toevoeging>
+               </mutatieGroep>
+               <mutatieGroep>
+                  <wijziging>
+                     <wordt>
+                        <bagObject>
+                           <Nummeraanduiding>
+                              <identificatie domein="NL.IMBAG.Nummeraanduiding">5000200000012601</identificatie>
+                              <huisnummer>41</huisnummer>
+                              <postcode>1954LU</postcode>
+                              <typeAdresseerbaarObject>Ligplaats</typeAdresseerbaarObject>
+                              <status>Naamgeving uitgegeven</status>
+                              <geconstateerd>N</geconstateerd>
+                              <documentdatum>2017-01-25</documentdatum>
+                              <documentnummer>55550</documentnummer>
+                              <voorkomen>
+                                 <Voorkomen>
+                                    <voorkomenidentificatie>1</voorkomenidentificatie>
+                                    <beginGeldigheid>2017-01-25</beginGeldigheid>
+                                    <eindGeldigheid>2017-01-25</eindGeldigheid>
+                                    <tijdstipRegistratie>2017-01-25T15:40:42.011</tijdstipRegistratie>
+                                    <eindRegistratie>2017-01-25T15:40:42.011</eindRegistratie>
+                                    <tijdstipInactief>2017-01-25T15:40:42.011</tijdstipInactief>
+                                    <BeschikbaarLV>
+                                       <tijdstipRegistratieLV>2022-09-29T12:39:28.575</tijdstipRegistratieLV>
+                                    </BeschikbaarLV>
+                                 </Voorkomen>
+                              </voorkomen>
+                              <ligtAan>
+                                 <OpenbareRuimteRef domein="NL.IMBAG.Openbareruimte">5000300000000096</OpenbareRuimteRef>
+                              </ligtAan>
+                           </Nummeraanduiding>
+                        </bagObject>
+                     </wordt>
+                  </wijziging>
+                  <toevoeging>
+                     <wordt>
+                        <bagObject>
+                           <Ligplaats>
+                              <heeftAlsHoofdadres>
+                                 <NummeraanduidingRef domein="NL.IMBAG.Nummeraanduiding">5000200000012600</NummeraanduidingRef>
+                              </heeftAlsHoofdadres>
+                              <voorkomen>
+                                 <Voorkomen>
+                                    <voorkomenidentificatie>1</voorkomenidentificatie>
+                                    <beginGeldigheid>2017-01-25</beginGeldigheid>
+                                    <eindGeldigheid>2017-01-25</eindGeldigheid>
+                                    <tijdstipRegistratie>2017-01-25T15:40:42.011</tijdstipRegistratie>
+                                    <eindRegistratie>2017-01-25</eindRegistratie>
+                                    <tijdstipInactief>2017-01-25</tijdstipInactief>
+                                    <BeschikbaarLV>
+                                       <tijdstipRegistratieLV>2022-09-29T12:39:28.575</tijdstipRegistratieLV>
+                                       <tijdstipEindRegistratieLV>2022-09-29T12:39:28.575</tijdstipEindRegistratieLV>
+                                       <tijdstipInactiefLV>2022-09-29T12:39:28.575</tijdstipInactiefLV>
+                                       <tijdstipNietBagLV>2022-09-29T12:39:28.575</tijdstipNietBagLV>
+                                    </BeschikbaarLV>
+                                 </Voorkomen>
+                              </voorkomen>
+                              <identificatie domein="NL.IMBAG.Ligplaats">5000020000072200</identificatie>
+                              <status>Plaats aangewezen</status>
+                              <geometrie>
+                                 <Polygon srsDimension="2" srsName="urn:ogc:def:crs:EPSG::28992">
+                                    <exterior>
+                                       <LinearRing>
+                                          <posList>210915.2 500800.2 210925.7 500800.2 210925.7 500800.7 210915.2 500800.7 210915.2 500800.2</posList>
+                                       </LinearRing>
+                                    </exterior>
+                                 </Polygon>
+                              </geometrie>
+                              <geconstateerd>N</geconstateerd>
+                              <documentdatum>2017-01-25</documentdatum>
+                              <documentnummer>55550</documentnummer>
+                           </Ligplaats>
+                        </bagObject>
+                     </wordt>
+                  </toevoeging>
+               </mutatieGroep>
+            </mutatieBericht>
+         </inhoud>
+      </Bag-gebeurtenis>
+   </gebeurtenisinhoud>
+</VerstrekkingAanAfnemer>

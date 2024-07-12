@@ -1,0 +1,64 @@
+name: lz_bag.verblijfsobject
+path: /sl-bag-extract:bagStand/sl:standBestand/sl:stand/sl-bag-extract:bagObject/Objecten:Verblijfsobject
+emit: copy_from,truncate
+cols:
+ - name: identificatie
+   path: /Objecten:identificatie
+ - name: status
+   path: /Objecten:status
+   #excl: ^(Verblijfsobject ten onrechte opgevoerd|Niet gerealiseerd verblijfsobject|Verblijfsobject ingetrokken|Verblijfsobject buiten gebruik)$
+ - name: gebruiksdoel
+   path: /Objecten:gebruiksdoel
+   aggr: append
+ - name: oppervlakte
+   path: /Objecten:oppervlakte
+ - name: hoofdadres
+   path: /Objecten:heeftAlsHoofdadres/Objecten-ref:NummeraanduidingRef
+ - name: nevenadres
+   path: /Objecten:heeftAlsNevenadres/Objecten-ref:NummeraanduidingRef
+   #file: bag-vbo-nevenadres.dump
+   aggr: append
+ - name: geconstateerd
+   path: /Objecten:geconstateerd
+ - name: documentdatum
+   path: /Objecten:documentdatum
+ - name: documentnummer
+   path: /Objecten:documentnummer
+ - name: voorkomenidentificatie 
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:voorkomenidentificatie
+   type: integer
+ - name: beginGeldigheid
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:beginGeldigheid
+   type: date
+ - name: eindGeldigheid
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:eindGeldigheid
+   type: date
+ - name: tijdstipRegistratie
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:tijdstipRegistratie
+   type: timestamp(3)
+ - name: eindRegistratie
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:eindRegistratie
+   type: timestamp(3)
+ - name: tijdstipInactief
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:tijdstipInactief
+   type: timestamp(3)   
+ - name: tijdstipRegistratieLV
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:BeschikbaarLV/Historie:tijdstipRegistratieLV
+   type: timestamp(3)
+ - name: tijdstipEindRegistratieLV
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:BeschikbaarLV/Historie:tijdstipEindRegistratieLV
+   type: timestamp(3)
+ - name: tijdstipInactiefLV
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:BeschikbaarLV/Historie:tijdstipInactiefLV
+   type: timestamp(3) 
+ - name: tijdstipNietBagLV
+   path: /Objecten:voorkomen/Historie:Voorkomen/Historie:BeschikbaarLV/Historie:tijdstipNietBagLV
+   type: timestamp(3)
+ - name: gml
+   path: /Objecten:geometrie/Objecten:punt
+   conv: gml-to-ewkb
+   hide: true
+ - name: pand
+   path: /Objecten:maaktDeelUitVan/Objecten-ref:PandRef
+   #file: bag-vbo-pand.dump
+   aggr: append
