@@ -22,7 +22,7 @@ Stand laden (volledige extract of proefbestand):
 Mutaties laden (één XML-voorbeeldbericht):
 
     cd scripts/loader/mutatie
-    cat insert_mutatiebericht.sql| psql basisreg
+    cat insert_mutatiebericht.sql| psql bag
 
 Het laden van de landing zone gebeurt met een loader, buiten dbt om, zie verderop.
 
