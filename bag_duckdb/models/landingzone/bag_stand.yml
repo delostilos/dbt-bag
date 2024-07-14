@@ -1,0 +1,154 @@
+version: 2
+
+sources:
+- name: lz_bag
+  # we gebruiken de duckdb spatial extensie om de standen te lezen!
+  meta:
+    area: '0106' # 0106 - gemeente Assen, 9999 - landelijk
+    date: '15112021' # 2021-11-15
+    external_location: "st_read('/Users/datadenken/Documents/GitHub/dbt-bag/scripts/loader/stand/data/xml/{area}{alias}{date}-{seqnr}.xml')"
+  tables:
+  - name: ligplaats_000001
+    meta:
+      alias: LIG
+      seqnr: '000001'
+  - name: ligplaats_inactief_000001
+    meta:
+      alias: IALIG
+      seqnr: '000001'      
+  - name: ligplaats_nietbag_000001
+    meta:
+      alias: NBLIG
+      seqnr: '000001'  
+  - name: nummeraanduiding_000001
+    meta:
+      alias: NUM
+      seqnr: '000001'
+  - name: nummeraanduiding_000002
+    meta:
+      alias: NUM
+      seqnr: '000002'
+  - name: nummeraanduiding_000003
+    meta:
+      alias: NUM
+      seqnr: '000003'
+  - name: nummeraanduiding_000004
+    meta:
+      alias: NUM
+      seqnr: '000004'
+  - name: nummeraanduiding_000005
+    meta:
+      alias: NUM
+      seqnr: '000005'            
+  - name: nummeraanduiding_inactief_000001
+    meta:
+      alias: IANUM
+      seqnr: '000001'      
+  - name: nummeraanduiding_nietbag_000001
+    meta:
+      alias: NBNUM
+      seqnr: '000001'  
+  - name: openbareruimte_000001
+    meta:
+      alias: OPR
+      seqnr: '000001'
+  - name: openbareruimte_inactief_000001
+    meta:
+      alias: IAOPR
+      seqnr: '000001'      
+  - name: openbareruimte_nietbag_000001
+    meta:
+      alias: NBOPR
+      seqnr: '000001'     
+  - name: pand_000001
+    meta:
+      alias: PND
+      seqnr: '000001'
+  - name: pand_000002
+    meta:
+      alias: PND
+      seqnr: '000002'
+  - name: pand_000003
+    meta:
+      alias: PND
+      seqnr: '000003'
+  - name: pand_000004
+    meta:
+      alias: PND
+      seqnr: '000004'
+  - name: pand_000005
+    meta:
+      alias: PND
+      seqnr: '000005'
+  - name: pand_000006
+    meta:
+      alias: PND
+      seqnr: '000006'
+  - name: pand_000007
+    meta:
+      alias: PND
+      seqnr: '000007'                        
+  - name: pand_inactief_000001
+    meta:
+      alias: IAPND
+      seqnr: '000001'      
+  - name: pand_nietbag_000001
+    meta:
+      alias: NBPND
+      seqnr: '000001'           
+  - name: standplaats_000001
+    meta:
+      alias: STA
+      seqnr: '000001'
+  - name: standplaats_inactief_000001
+    meta:
+      alias: IASTA
+      seqnr: '000001'      
+  - name: standplaats_nietbag_000001
+    meta:
+      alias: NBSTA
+      seqnr: '000001'        
+  - name: verblijfsobject_000001
+    meta:
+      alias: VBO
+      seqnr: '000001'
+  - name: verblijfsobject_000002
+    meta:
+      alias: VBO
+      seqnr: '000002'
+  - name: verblijfsobject_000003
+    meta:
+      alias: VBO
+      seqnr: '000003'
+  - name: verblijfsobject_000004
+    meta:
+      alias: VBO
+      seqnr: '000004'
+  - name: verblijfsobject_000005
+    meta:
+      alias: VBO
+      seqnr: '000005'
+  - name: verblijfsobject_000006
+    meta:
+      alias: VBO
+      seqnr: '000006'                         
+  - name: verblijfsobject_inactief_000001
+    meta:
+      alias: IAVBO
+      seqnr: '000001'      
+  - name: verblijfsobject_nietbag_000001
+    meta:
+      alias: NBVBO
+      seqnr: '000001'  
+  - name: woonplaats_000001
+    meta:
+      alias: WPL
+      seqnr: '000001'
+  - name: woonplaats_inactief_000001
+    meta:
+      alias: IAWPL
+      seqnr: '000001'      
+  - name: woonplaats_nietbag_000001
+    meta:
+      alias: NBWPL
+      seqnr: '000001'        
