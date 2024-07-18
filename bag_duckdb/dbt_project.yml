@@ -32,5 +32,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   bag_duckdb:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    # uitlever:
+    #   locatie:
+    #     schema: locatie
