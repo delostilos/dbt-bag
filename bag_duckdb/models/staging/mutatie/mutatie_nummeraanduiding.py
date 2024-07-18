@@ -18,37 +18,47 @@ def model(dbt, session):
     yml_dict = yaml.safe_load(yml_fobj)
     
     pa_table = None
-    # loop through all entities as specified in the yaml
-    for entity in yml_dict['models'] :
-        if entity['name'] == dbt.this.identifier :   
-            nsmap = entity['meta']['namespaces']    
-            logging.debug('Entity \'%s\' with %s attributes (%s)' % (entity['name'], \
-                    len(entity['columns']), \
-                    ', '.join(i['name'] for i in entity['columns'])))
-
-            # loop through all attributes of the entity as specified in the yaml
+    # loop through all tables as specified in the yaml
+    for table in yml_dict['models'] :
+        # filter on the current table
+        if table['name'] == dbt.this.identifier :   
+            nsmap = table['meta']['namespaces']    
+            # loop through all columns of the table as specified in the yaml
             # and use the specified path to get the corresponding value
-            # set the schema of all attributes to string!
-            attributes = {}
+            # set the schema of all columns to string!
+            columns = {}
             schema = []
-            for attribute in entity['columns']:
-                attributes[attribute['name']] = []
-                schema.append((attribute['name'],pa.string()))
-            # x if a > b else y    
-            for entity_element in root.xpath(entity['meta']['xpath'], namespaces=nsmap):
-                for attribute in entity['columns']:
-                    node = entity_element.xpath(attribute['meta']['xpath'] if 'meta' in attribute else attribute['name'], namespaces=nsmap)
+            for column in table['columns']:
+                columns[column['name']] = []
+                schema.append((column['name'],pa.string()))
+            # load the dictionairy of columns with array of values (columnar ;-)    
+            for table_element in root.xpath(table['meta']['xpath'], namespaces=nsmap):
+                for column in table['columns']:
+                    # load the xpath of the column, if not defined assume it is the same as the name
+                    node = table_element.xpath(column['meta']['xpath'] if 'meta' in column else column['name'], namespaces=nsmap)
+                    # check if the node contains something
                     if node is not None and len(node) > 0:
+                        # check if the node is an element
                         if isinstance(node[0],etree._Element):
-                            attributes[attribute['name']].append(node[0].text)
+                            # check if we have a single element or a list of elements
+                            if len(node) == 1:
+                                columns[column['name']].append(node[0].text)
+                            # store the list in a comma delimited string    
+                            else:
+                                text_list = [el.text for el in node]
+                                columns[column['name']].append(','.join(text_list))
+                        # check if the node is an unicode string        
+                        elif isinstance(node, etree._ElementUnicodeResult):
+                            columns[column['name']].append(node)  
+                        # if not it is the node itself we need, then probably an attribute              
                         else:    
-                            attributes[attribute['name']].append(node[0])
+                            columns[column['name']].append(node[0])
                     else:
-                        attributes[attribute['name']].append(None)
+                        columns[column['name']].append(None)
             
             # write to parquet
             pa_schema = pa.schema(schema)
-            pa_table = pa.Table.from_pydict(attributes, schema = pa_schema)
+            pa_table = pa.Table.from_pydict(columns, schema = pa_schema)
         
     return pa_table
 
