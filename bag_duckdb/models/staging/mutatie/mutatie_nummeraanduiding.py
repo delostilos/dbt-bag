@@ -2,9 +2,6 @@ from lxml import etree
 import pyarrow as pa
 import pyarrow.parquet as pq
 import yaml
-import time
-import logging
-
 
 def model(dbt, session):
     sourcefile = dbt.config.get('sourcefile')
