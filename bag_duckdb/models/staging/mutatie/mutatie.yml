@@ -2,21 +2,22 @@ version: 2
 
 common_config: &common_config
   sourcefile: ../scripts/loader/mutatie/proefbestand_mutaties.xml
+  namespaces: {}
 
 models:
 - name: mutatie_nummeraanduiding
   config:
-    <<: *common_config
-    modelfile: models/staging/mutatie/mutatie.yml
-  meta:
-    xpath: /bagMutaties/mutatieBericht/mutatieGroep/*/*/bagObject/Nummeraanduiding
-    namespaces: {}
-  columns:
-  - name: identificatie
-  - name: status 
-  - name: mutatiesoort
-    meta:
-      xpath: name(../../..)      
-  - name: waswordt 
-    meta:
-      xpath: name(../..)
+    <<: *common_config    
+    table: &nummeraanduiding
+      meta:
+        xpath: /bagMutaties/mutatieBericht/mutatieGroep/*/*/bagObject/Nummeraanduiding
+      columns: 
+      - name: identificatie
+      - name: status 
+      - name: mutatiesoort
+        meta:
+          xpath: name(../../..)      
+      - name: waswordt 
+        meta:
+          xpath: name(../..)
+  <<: *nummeraanduiding        
