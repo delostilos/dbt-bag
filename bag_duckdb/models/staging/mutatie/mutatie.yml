@@ -1,9 +1,12 @@
 version: 2
 
+common_config: &common_config
+  sourcefile: ../scripts/loader/mutatie/proefbestand_mutaties.xml
+
 models:
 - name: mutatie_nummeraanduiding
   config:
-    sourcefile: ../scripts/loader/mutatie/proefbestand_mutaties.xml
+    <<: *common_config
     modelfile: models/staging/mutatie/mutatie.yml
   meta:
     xpath: /bagMutaties/mutatieBericht/mutatieGroep/*/*/bagObject/Nummeraanduiding

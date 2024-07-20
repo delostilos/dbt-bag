@@ -1,0 +1,40 @@
+import glob
+import pyarrow as pa
+import tempfile 
+from zipfile import ZipFile
+ 
+# generiek kopieren voor ieder BAG object
+def model(dbt, session):
+    # ophalen config
+    sourcedir = dbt.config.get('sourcedir')
+    mnemonic = dbt.config.get('mnemonic')
+    datum = dbt.config.get('date')
+    area = dbt.config.get('area')
+    # aanmaken tempdir
+    temp_dir = tempfile.TemporaryDirectory()
+    tmpdirname = temp_dir.name
+    # unzip bestanden in tempdir    
+    ZipFile(f"{sourcedir}{area}{mnemonic}{datum}.zip", 'r').extractall(tmpdirname)
+    # in actief
+    ZipFile(f"{sourcedir}{area}IA{mnemonic}{datum}.zip", 'r').extractall(tmpdirname)        
+    # niet BAG
+    ZipFile(f"{sourcedir}{area}NB{mnemonic}{datum}.zip", 'r').extractall(tmpdirname)
+    # lijst van te verwerken bestanden
+    xml_files =  glob.glob(f"{tmpdirname}/*{mnemonic}*.xml")
+    batches = []
+    for xml_file in xml_files:
+        df = session.sql(f"from st_read('{xml_file}')").df()
+        if not df.empty:
+            rb = pa.record_batch(df)
+            batches.append(rb)
+    # temp dir opruimen    
+    temp_dir.cleanup()    
+    return pa.RecordBatchReader.from_batches(batches[0].schema, batches)
+
+
+
+
+    
+
+    
+ 

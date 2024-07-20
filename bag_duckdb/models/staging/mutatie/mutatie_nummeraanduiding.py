@@ -1,6 +1,5 @@
 from lxml import etree
 import pyarrow as pa
-import pyarrow.parquet as pq
 import yaml
 
 def model(dbt, session):
