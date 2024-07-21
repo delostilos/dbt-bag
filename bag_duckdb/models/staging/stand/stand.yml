@@ -2,8 +2,8 @@ version: 2
 
 common_config: &common_config
   sourcedir: ../scripts/loader/stand/data/
-  area: '0106' # 0106 - gemeente Assen, 9999 - landelijk
-  date: '15112021' # 2021-11-15  
+  area: '9999' # 0106 - gemeente Assen, 9999 - landelijk
+  date: '08072024' # 2021-11-15  
 
 models:
 - name: stand_ligplaats
