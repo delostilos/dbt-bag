@@ -1,6 +1,5 @@
 from lxml import etree
 import pyarrow as pa
-import yaml
 
 def model(dbt, session):
     sourcefile = dbt.config.get('sourcefile')
