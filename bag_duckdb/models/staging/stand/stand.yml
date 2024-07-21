@@ -30,6 +30,10 @@ models:
   config: 
     <<: *common_config
     mnemonic: VBO      
+- name: stand_verblijfsobject_ia_nb
+  config: 
+    <<: *common_config
+    mnemonic: VBO      
 - name: stand_woonplaats
   config: 
     <<: *common_config
