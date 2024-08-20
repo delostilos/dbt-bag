@@ -4,7 +4,12 @@
 # name or the intended use of these models
 name: 'bag_duckdb'
 version: '1.0.0'
+config-version: 2
 
+vars:
+  sourcedir: ../scripts/loader/stand/data/
+  area: '0106' # 0106 - gemeente Assen, 9999 - landelijk TODO met variabelen inrichten
+  date: '15112021' # 2021-11-15 
 # This setting configures which "profile" dbt uses for this project.
 profile: 'bag_duckdb'
 

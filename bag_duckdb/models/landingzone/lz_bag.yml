@@ -1,0 +1,75 @@
+version: 2
+
+sources:
+- name: lz_bag
+  loader: shell
+  meta:
+    lz_path: "{{ var('sourcedir') }}"
+  tables:
+  - name: extract_levering
+    meta:
+      external_location: (select '{{ var('sourcedir') }}Leveringsdocument-BAG-Extract.xml' as bestand)   
+  - name: gemeente_woonplaats_relatie
+    meta:
+      file_pattern: GEM-WPL-RELATIE-ddmmyyyy.zip
+      external_location: (select '{{ var('sourcedir') }}GEM-WPL-RELATIE-{{ var('date') }}.zip' as {name})   
+  - name: gemeente_tabel
+    meta: 
+      external_location: read_csv('{{ var('sourcedir') }}gemeenten_tabel_utf8.csv')       
+  - name: ligplaats_zipped_xml
+    meta:
+      external_location: (select '{{ var('sourcedir') }}{{ var('area') }}LIG{{ var('date') }}.zip' as bestand)     
+  - name: ligplaats_inactief_zipped_xml
+    meta:
+      external_location: (select '{{ var('sourcedir') }}{{ var('area') }}IALIG{{ var('date') }}.zip' as bestand)    
+  - name: ligplaats_niet_bag_zipped_xml
+    meta:
+      external_location: (select '{{ var('sourcedir') }}{{ var('area') }}NBLIG{{ var('date') }}.zip' as bestand)              
+  - name: nummeraanduiding_zipped_xml
+    meta:
+      file_pattern: '*NUM*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})    
+  - name: nummeraanduiding_inactief_zipped_xml
+    meta:
+      file_pattern: '*IANUM*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})    
+  - name: nummeraanduiding_niet_bag_zipped_xml
+    meta:
+      file_pattern: '*NBNUM*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})  
+  - name: openbareruimte_zipped_xml
+    meta:
+      file_pattern: '*OPR*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})    
+  - name: openbareruimte_inactief_zipped_xml
+    meta:
+      file_pattern: '*IAOPR*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})    
+  - name: openbareruimte_niet_bag_zipped_xml
+    meta:
+      file_pattern: '*NBOPR*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})       
+  - name: pand_zipped_xml
+    meta:
+      file_pattern: '*PND*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})    
+  - name: pand_inactief_zipped_xml
+    meta:
+      file_pattern: '*IAPND*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})    
+  - name: pand_niet_bag_zipped_xml
+    meta:
+      file_pattern: '*NBPND*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})    
+  - name: woonplaats_zipped_xml
+    meta:
+      file_pattern: '*WPL*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})    
+  - name: woonplaats_inactief_zipped_xml
+    meta:
+      file_pattern: '*IAWPL*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})    
+  - name: woonplaats_niet_bag_zipped_xml
+    meta:
+      file_pattern: '*NBWPL*ddmmyyyy.zip'
+      external_location: (select '{file_pattern}' as {name})                 

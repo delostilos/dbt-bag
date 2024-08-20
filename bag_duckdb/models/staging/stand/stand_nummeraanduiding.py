@@ -2,9 +2,14 @@ import glob
 import pyarrow as pa
 import tempfile 
 from zipfile import ZipFile
+from datetime import datetime, timezone
  
 # generiek kopieren voor ieder BAG object
 def model(dbt, session):
+    # tbv van lineage
+    dbt.source('lz_bag','nummeraanduiding_zipped_xml')
+    dbt.source('lz_bag','nummeraanduiding_inactief_zipped_xml')
+    dbt.source('lz_bag','nummeraanduiding_niet_bag_zipped_xml')    
     # ophalen config
     sourcedir = dbt.config.get('sourcedir')
     mnemonic = dbt.config.get('mnemonic')
@@ -13,27 +18,28 @@ def model(dbt, session):
     # aanmaken tempdir
     temp_dir = tempfile.TemporaryDirectory()
     tmpdirname = temp_dir.name
+    print(f"{sourcedir}{area}{mnemonic}{datum}.zip")
     # unzip bestanden in tempdir    
     ZipFile(f"{sourcedir}{area}{mnemonic}{datum}.zip", 'r').extractall(tmpdirname)
-    print(f"........  {mnemonic} uitgepakt")
+    print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {mnemonic} uitgepakt")
     # in actief
     ZipFile(f"{sourcedir}{area}IA{mnemonic}{datum}.zip", 'r').extractall(tmpdirname)
-    print(f"........  {mnemonic} IA uitgepakt")        
+    print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {mnemonic} IA uitgepakt")        
     # niet BAG
     ZipFile(f"{sourcedir}{area}NB{mnemonic}{datum}.zip", 'r').extractall(tmpdirname)
-    print(f"........  {mnemonic} NB uitgepakt") 
+    print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {mnemonic} NB uitgepakt") 
     # lijst van te verwerken bestanden
     xml_files =  sorted(glob.glob(f"{tmpdirname}/*{mnemonic}*.xml"))
-    print(f"........  {len(xml_files)} bestanden te verwerken")
+    print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {len(xml_files)} bestanden te verwerken")
     batches = []
     for i, xml_file in enumerate(xml_files, start=1):
         df = session.sql(f"from st_read('{xml_file}')").arrow()
         if df.num_rows > 0:
             rb = df.to_batches()[0]          
             batches.append(rb)
-            print(f"........  Batch {i} toegevoegd")
+            print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  Batch {i} toegevoegd")
         else:
-            print(f"........  Batch {i} overgeslagen, leeg")      
+            print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  Batch {i} overgeslagen, leeg")      
     # temp dir opruimen    
     temp_dir.cleanup()    
     return pa.RecordBatchReader.from_batches(batches[0].schema, batches)
