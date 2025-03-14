@@ -8,7 +8,7 @@ models:
 - name: mutatie_nummeraanduiding
   config:
     <<: *common_config    
-    table: &nummeraanduiding
+    table: &nummeraanduiding_table
       meta:
         xpath: /bagMutaties/mutatieBericht/mutatieGroep/*/*/bagObject/Nummeraanduiding
       columns: 
@@ -20,4 +20,4 @@ models:
       - name: waswordt 
         meta:
           xpath: name(../..)
-  <<: *nummeraanduiding        
+  <<: *nummeraanduiding_table        

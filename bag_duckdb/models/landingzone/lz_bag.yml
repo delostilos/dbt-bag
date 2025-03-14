@@ -4,72 +4,48 @@ sources:
 - name: lz_bag
   loader: shell
   meta:
-    lz_path: "{{ var('sourcedir') }}"
+    extension: zip
+    external_location: ( values('{{ var('sourcedir') }}', '{mnemonic}', '{extension}') )
   tables:
   - name: extract_levering
+    columns: 
+    - name: sourcedir
+    - name: mnemonic
+    - name: extension
     meta:
-      external_location: (select '{{ var('sourcedir') }}Leveringsdocument-BAG-Extract.xml' as bestand)   
+      extension: xml
+      mnemonic: BAG 
+     
   - name: gemeente_woonplaats_relatie
     meta:
-      file_pattern: GEM-WPL-RELATIE-ddmmyyyy.zip
-      external_location: (select '{{ var('sourcedir') }}GEM-WPL-RELATIE-{{ var('date') }}.zip' as {name})   
+      mnemonic: GEM-WPL-RELATIE- 
   - name: gemeente_tabel
+    columns:
+    - name: '"92.10 Gemeentecode"'
+    - name: '"92.11 Omschrijving"'
+    - name: '"92.12 Nieuwe code"'
+    - name: '"99.98 Datum ingang"'    
+    - name: '"99.99 Datum einde"'
     meta: 
       external_location: read_csv('{{ var('sourcedir') }}gemeenten_tabel_utf8.csv')       
-  - name: ligplaats_zipped_xml
+  - name: ligplaats
     meta:
-      external_location: (select '{{ var('sourcedir') }}{{ var('area') }}LIG{{ var('date') }}.zip' as bestand)     
-  - name: ligplaats_inactief_zipped_xml
+      mnemonic: LIG
+  - name: nummeraanduiding
     meta:
-      external_location: (select '{{ var('sourcedir') }}{{ var('area') }}IALIG{{ var('date') }}.zip' as bestand)    
-  - name: ligplaats_niet_bag_zipped_xml
+      mnemonic: NUM  
+  - name: openbareruimte
     meta:
-      external_location: (select '{{ var('sourcedir') }}{{ var('area') }}NBLIG{{ var('date') }}.zip' as bestand)              
-  - name: nummeraanduiding_zipped_xml
+      mnemonic: OPR       
+  - name: pand
     meta:
-      file_pattern: '*NUM*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})    
-  - name: nummeraanduiding_inactief_zipped_xml
+      mnemonic: PND 
+  - name: standplaats
     meta:
-      file_pattern: '*IANUM*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})    
-  - name: nummeraanduiding_niet_bag_zipped_xml
+      mnemonic: STA  
+  - name: verblijfsobject
     meta:
-      file_pattern: '*NBNUM*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})  
-  - name: openbareruimte_zipped_xml
+      mnemonic: VBO                       
+  - name: woonplaats
     meta:
-      file_pattern: '*OPR*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})    
-  - name: openbareruimte_inactief_zipped_xml
-    meta:
-      file_pattern: '*IAOPR*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})    
-  - name: openbareruimte_niet_bag_zipped_xml
-    meta:
-      file_pattern: '*NBOPR*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})       
-  - name: pand_zipped_xml
-    meta:
-      file_pattern: '*PND*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})    
-  - name: pand_inactief_zipped_xml
-    meta:
-      file_pattern: '*IAPND*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})    
-  - name: pand_niet_bag_zipped_xml
-    meta:
-      file_pattern: '*NBPND*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})    
-  - name: woonplaats_zipped_xml
-    meta:
-      file_pattern: '*WPL*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})    
-  - name: woonplaats_inactief_zipped_xml
-    meta:
-      file_pattern: '*IAWPL*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})    
-  - name: woonplaats_niet_bag_zipped_xml
-    meta:
-      file_pattern: '*NBWPL*ddmmyyyy.zip'
-      external_location: (select '{file_pattern}' as {name})                 
+      mnemonic: WPL        

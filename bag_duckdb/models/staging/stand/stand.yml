@@ -1,9 +1,6 @@
 version: 2
 
 common_config: &common_config
-  sourcedir: "{{ var('sourcedir') }}"
-  area: "{{ var('area') }}" # 0106 - gemeente Assen, 9999 - landelijk TODO met variabelen inrichten
-  date: "{{ var('date') }}" # 2021-11-15 
   namespaces: 
     DatatypenNEN3610: "www.kadaster.nl/schemas/lvbag/imbag/datatypennen3610/v20200601" 
     Objecten: "www.kadaster.nl/schemas/lvbag/imbag/objecten/v20200601" 
@@ -49,27 +46,22 @@ models:
     mnemonic: LIG
 - name: stand_nummeraanduiding
   config: 
-    <<: *common_config
     mnemonic: NUM
 - name: stand_openbareruimte
   config: 
-    <<: *common_config
     mnemonic: OPR    
 - name: stand_pand
   config: 
     <<: *common_config
     mnemonic: PND      
 - name: stand_standplaats
-  config:
-    <<: *common_config    
+  config:   
     mnemonic: STA         
 - name: stand_verblijfsobject
   config: 
-    <<: *common_config
     mnemonic: VBO          
 - name: stand_woonplaats
   config: 
-    <<: *common_config
     mnemonic: WPL  
 - name: stand_gemeente_woonplaats
   config:

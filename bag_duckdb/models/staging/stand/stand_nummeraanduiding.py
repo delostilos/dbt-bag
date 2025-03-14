@@ -3,33 +3,45 @@ import pyarrow as pa
 import tempfile 
 from zipfile import ZipFile
 from datetime import datetime, timezone
+
+def levering(dbt, session):
+    # area en datum uit leverings info bestand.
+    stand_levering = dbt.ref('stand_levering').fetchone()
+    datum_levering = stand_levering[0]
+    area_levering = stand_levering[1]
+    if area_levering == None :
+        area_levering = '9999' # landelijk
+    datum_array = datum_levering.split("-") 
+    datum_string = f"{datum_array[2]}{datum_array[1]}{datum_array[0]}" 
+    print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  datum levering {datum_levering}, area levering {area_levering}")
+    return {"datum": datum_string, "area": area_levering}
  
 # generiek kopieren voor ieder BAG object
 def model(dbt, session):
-    # tbv van lineage
-    dbt.source('lz_bag','nummeraanduiding_zipped_xml')
-    dbt.source('lz_bag','nummeraanduiding_inactief_zipped_xml')
-    dbt.source('lz_bag','nummeraanduiding_niet_bag_zipped_xml')    
-    # ophalen config
-    sourcedir = dbt.config.get('sourcedir')
-    mnemonic = dbt.config.get('mnemonic')
-    datum = dbt.config.get('date')
-    area = dbt.config.get('area')
+    levering_config = levering(dbt,session)
+    # tbv van lineage, query met bestandsnaam
+    bag_config = dbt.source('lz_bag','nummeraanduiding').fetchone()
+    sourcedir = bag_config[0]
+    base_mnemonic = bag_config[1]
+    extension = bag_config[2]
+    menemonics =[]
+    # standaard historie
+    menemonics.append(base_mnemonic)
+    # inactief historie
+    menemonics.append(f"IA{base_mnemonic}")
+    # niet bag historie
+    menemonics.append(f"NB{base_mnemonic}")
     # aanmaken tempdir
     temp_dir = tempfile.TemporaryDirectory()
     tmpdirname = temp_dir.name
-    print(f"{sourcedir}{area}{mnemonic}{datum}.zip")
-    # unzip bestanden in tempdir    
-    ZipFile(f"{sourcedir}{area}{mnemonic}{datum}.zip", 'r').extractall(tmpdirname)
-    print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {mnemonic} uitgepakt")
-    # in actief
-    ZipFile(f"{sourcedir}{area}IA{mnemonic}{datum}.zip", 'r').extractall(tmpdirname)
-    print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {mnemonic} IA uitgepakt")        
-    # niet BAG
-    ZipFile(f"{sourcedir}{area}NB{mnemonic}{datum}.zip", 'r').extractall(tmpdirname)
-    print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {mnemonic} NB uitgepakt") 
+     
+    # unzip bestanden in tempdir 
+    for mnemonic in sorted(menemonics):
+        zipfile = f"{sourcedir}{levering_config['area']}{mnemonic}{levering_config['datum']}.{extension}"
+        ZipFile(zipfile, 'r').extractall(tmpdirname)
+        print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {zipfile} uitgepakt")
     # lijst van te verwerken bestanden
-    xml_files =  sorted(glob.glob(f"{tmpdirname}/*{mnemonic}*.xml"))
+    xml_files =  sorted(glob.glob(f"{tmpdirname}/*{base_mnemonic}*.xml"))
     print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {len(xml_files)} bestanden te verwerken")
     batches = []
     for i, xml_file in enumerate(xml_files, start=1):
@@ -37,9 +49,9 @@ def model(dbt, session):
         if df.num_rows > 0:
             rb = df.to_batches()[0]          
             batches.append(rb)
-            print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  Batch {i} toegevoegd")
+            print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  Batch {i} met {df.num_rows} rijen toegevoegd ({xml_file.split('/')[-1]})")
         else:
-            print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  Batch {i} overgeslagen, leeg")      
+            print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  Batch {i} overgeslagen, leeg  ({xml_file.split('/')[-1]})")      
     # temp dir opruimen    
     temp_dir.cleanup()    
     return pa.RecordBatchReader.from_batches(batches[0].schema, batches)

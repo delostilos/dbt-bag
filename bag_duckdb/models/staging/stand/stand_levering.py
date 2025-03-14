@@ -7,11 +7,14 @@ from datetime import datetime, timezone
 # generiek kopieren voor ieder BAG object
 def model(dbt, session):
     # ophalen config
-    extract_levering = dbt.source('lz_bag','extract_levering').fetchall()[0][0]
+    extract_levering = dbt.source('lz_bag','extract_levering').fetchone()
+    sourcedir = extract_levering[0]
+    mnemonic = extract_levering[1]
+    extension = extract_levering[2]
     table = dbt.config.get('table')
     namespaces = dbt.config.get('namespaces')  
     # lijst van te verwerken bestanden
-    xml_files =  sorted(glob.glob(extract_levering))
+    xml_files =  sorted(glob.glob(f"{sourcedir}Leveringsdocument-{mnemonic}-Extract.{extension}"))
     print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {len(xml_files)} bestanden te verwerken")
     batches = []
     for i, xml_file in enumerate(xml_files, start=1):
