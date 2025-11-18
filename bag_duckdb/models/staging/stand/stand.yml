@@ -61,8 +61,34 @@ models:
   config: 
     mnemonic: VBO          
 - name: stand_woonplaats
+  description: >
+   {{ doc("woonplaats") }} 
+   ```mermaid[erd="bag"]```
   config: 
-    mnemonic: WPL  
+    mnemonic: WPL 
+    meta: 
+      erd:
+        connections:
+        - diagram: bag
+          target: stand_openbareruimte
+          source_cardinality: one
+          target_cardinality: one_or_more
+          label: creates
+  
+  columns:
+  - name: naam
+    description: '{{ doc("woonplaats__naam")}}'
+  - name: identificatie
+    description: '{{ doc("woonplaats__identificatie")}}'
+  - name: status
+    description: '{{ doc("woonplaats__status")}}'
+    tests:
+    - accepted_values:
+        values: ['Woonplaats aangewezen','Woonplaats ingetrokken'] 
+  - name: geconstateerd
+  - name: begingeldigheid
+    description: '{{ doc("begingeldigheid") }}'
+
 - name: stand_gemeente_woonplaats
   config:
     <<: *common_config

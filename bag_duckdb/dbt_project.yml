@@ -1,4 +1,3 @@
-
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
@@ -8,7 +7,9 @@ config-version: 2
 
 vars:
   sourcedir: ../scripts/loader/stand/data/
-
+# area: '0106' # 0106 - gemeente Assen, 9999 - landelijk TODO met variabelen inrichten
+#  date: '15112021' # 2021-11-15 
+# This setting configures which "profile" dbt uses for this project.
 profile: 'bag_duckdb'
 
 # These configurations specify where dbt should look for different types of files.
