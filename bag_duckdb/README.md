@@ -28,7 +28,7 @@ Het laden van de landing zone gebeurt met een loader, buiten dbt om, zie verdero
 
 In principe zou de landing zone leegemaakt kunnen worden nadat de bronspiegel (en/of snapshot) is bijgewerkt. We verwerken namelijk geen verwijderingen (deze komen immers niet voor in de BAG). De verwerking kijkt alleen naar regels in de landing zone die een nieuwere `_etl_loaded_at` hebben dan reeds aanwezig in de bronspiegel.
 
-```mermaid[erd='bag']
+```mermaid
 erDiagram
 
     gemeente ||--|{ gemeente_woonplaats : "woonplaats"
