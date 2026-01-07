@@ -31,18 +31,17 @@ In principe zou de landing zone leegemaakt kunnen worden nadat de bronspiegel (e
 ```mermaid
 erDiagram
 
+    gemeente ||--|{ gemeente : "is opgegeaan in"
     gemeente ||--|{ gemeente_woonplaats : "woonplaats"
-    woonplaats ||--|| gemeente_woonplaats : "gemeente"
-    gemeente }|--|{ gemeente : "opgegeaan in"
-    woonplaats ||--|{ openbareruimte : "ligt in"
-    nummeraanduiding ||--|{ openbareruimte : "ligt aan" 
-    nummeraanduiding ||--o{ woonplaats : "ligt in"
+    woonplaats   ||--|| gemeente_woonplaats : "gemeente"
+    openbareruimte }|--|| woonplaats : "ligt in"
+    nummeraanduiding }|--|| openbareruimte : "ligt aan" 
+    nummeraanduiding }o--|| woonplaats : "ligt in"
     adresseerbaar_object ||--|{ nummeraanduiding : "adres"
     nummeraanduiding ||--|{ adresseerbaar_object : "hoofdadres"
-    adresseerbaar_object }o--|| woonplaats : "adres"
-    adresseerbaar_object |o--|| verblijfsobject : "vbo"
     adresseerbaar_object |o--|| ligplaats : "ligplaats"
     adresseerbaar_object |o--|| standplaats : "standplaats"
+    adresseerbaar_object |o--|| verblijfsobject : "vbo"
     verblijfsobject }|--|{ pand : "pand"
 ```
 
