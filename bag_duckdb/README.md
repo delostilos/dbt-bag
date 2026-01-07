@@ -1,32 +1,22 @@
 # bag_duckdb
 Dit dbt-project bouwt via standen (extract landelijke voorziening) een bronspiegel op van de BAG. De databaseobjecten bevinden zich in het databaseschema `bag`.
 
-## Lagen (`models/`)
+## dbt modellen (`models/`)
 
-### Landing zone (source)
-De landing zone is een model van het type 'source' in dbt en bevat de rauwe BAG-data. Er is een typed en untyped variant.
-* de *untyped* variant bestaat uit een tabel met mutatieberichten (XML) die verderop in de staging geparsed worden
-* de *typed* variant bestaat uit een tabel per BAG-objecttype met een kolom per attribuut
+### Documentatie (`documantatie/`)
+Hier staan alle markdown bestanden t.b.v. de documentatie van de dbt modellen.
 
-De typed variant zal normaalgesproken voor de standen worden gebruikt en de untyped variant voor de mutaties. Maar in principe maakt dit niet uit.
+### Landing zone (`landingzone/`)
+De landing zone bevat de modellen van het type 'source' in dbt en bevat de metadata voor de rauwe BAG-data.
+In de dbt project yaml staat het pad naar de gedownloade BAG data. Daarvoor staan er scripts in de `scripts/loader/stand/data`-folder.
+Met de scripts `download` en `download_proefbestand` is het mogelijk om het reguliere of het proef bestand te downloaden naar de `scripts/loader/stand/data`-folder.
 
-De landing zone bevindt zich in het databaseschema `lz_bag`. Omdat het een dbt-model van het type 'source' betreft wordt de DDL buiten dbt om gecreëerd. Daarvoor staan er SQL-scripts in de `scripts/`-folder.
-
-Elke tabel in de landing zone kent een kolom `_etl_loaded_at`. Deze is van belang voor de auditeerbaarheid en voor het incrementeel laden.
-
-Stand laden (volledige extract of proefbestand):
-
-    cd scripts/loader/stand/
-    ./load.sh
-
-Mutaties laden (één XML-voorbeeldbericht):
-
-    cd scripts/loader/mutatie
-    cat insert_mutatiebericht.sql| psql bag
-
-Het laden van de landing zone gebeurt met een loader, buiten dbt om, zie verderop.
-
-In principe zou de landing zone leegemaakt kunnen worden nadat de bronspiegel (en/of snapshot) is bijgewerkt. We verwerken namelijk geen verwijderingen (deze komen immers niet voor in de BAG). De verwerking kijkt alleen naar regels in de landing zone die een nieuwere `_etl_loaded_at` hebben dan reeds aanwezig in de bronspiegel.
+### Staging stand (`staging\stand\`)
+Voor het laden van de standen zijn verschillende python en sql dbt modellen aangemaakt met de bijbehorende configuratie in de stand.yml.
+Type python modellen:
+- via een xpath configuratie wordt de XML ingelezen in een DuckDB table
+- via de st_read uit de spatial module van DuckDB worden de BAG data bestanden ingelezen
+Eén sql model om de gemeente data in te lezen uit het csv bestand.
 
 ```mermaid
 erDiagram
