@@ -45,7 +45,7 @@ def model(dbt, session):
     print(f"{datetime.now(timezone.utc).strftime('%H:%M:%S')}  {len(xml_files)} bestanden te verwerken")
     batches = []
     for i, xml_file in enumerate(xml_files, start=1):
-        df = session.sql(f"from st_read('{xml_file}')").arrow()
+        df = session.sql(f"from st_read('{xml_file}')").arrow().read_all()
         if df.num_rows > 0:
             rb = df.to_batches()[0]          
             batches.append(rb)

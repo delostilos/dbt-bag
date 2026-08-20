@@ -146,3 +146,90 @@ Runtime Error
 [0m08:34:35.461758 [debug] [MainThread]: Command `dbt debug` failed at 08:34:35.461696 after 0.19 seconds
 [0m08:34:35.462070 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x125b59c30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x130b4be50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x130306da0>]}
 [0m08:34:35.462337 [debug] [MainThread]: Flushing usage events
+[0m07:57:27.116586 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10631c6e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112307750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112307890>]}
+
+
+============================== 07:57:27.120096 | 53549c62-f10f-4469-9c77-c451f6849626 ==============================
+[0m07:57:27.120096 [info ] [MainThread]: Running with dbt=1.12.2
+[0m07:57:27.120481 [debug] [MainThread]: running dbt with arguments {'empty': 'False', 'debug': 'False', 'introspect': 'True', 'log_cache_events': 'False', 'static_parser': 'True', 'printer_width': '80', 'warn_error': 'None', 'log_path': 'logs', 'use_colors': 'True', 'profiles_dir': '/Users/datadenken/.dbt', 'partial_parse': 'True', 'invocation_command': 'dbt run -m stand_woonplaats', 'maximum_seed_size_mib': '1', 'hints_enabled': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'version_check': 'True', 'target_path': 'None', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'log_format': 'default', 'quiet': 'False', 'use_experimental_parser': 'False', 'no_print': 'None', 'write_json': 'True'}
+[0m07:57:27.120808 [warn ] [MainThread]: [[33mWARNING[0m][ModelParamUsageDeprecation]: Deprecated functionality
+Usage of `--models`, `--model`, and `-m` is deprecated in favor of `--select` or
+`-s`.
+[0m07:57:27.121019 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '53549c62-f10f-4469-9c77-c451f6849626', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1123129e0>]}
+[0m07:57:27.121425 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /Users/datadenken/Documents/GitHub/dbt-bag/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m07:57:27.121772 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ModelParamUsageDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m07:57:27.257726 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.20268263, "process_in_blocks": "0", "process_kernel_time": 0.135917, "process_mem_max_rss": "126763008", "process_out_blocks": "0", "process_user_time": 0.897396}
+[0m07:57:27.258159 [debug] [MainThread]: Command `dbt run` failed at 07:57:27.258094 after 0.20 seconds
+[0m07:57:27.258395 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112349e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112349f20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112113150>]}
+[0m07:57:27.258605 [debug] [MainThread]: Flushing usage events
+[0m07:57:27.859031 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:57:58.994308 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10725c6e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119cbf750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119cbf890>]}
+
+
+============================== 07:57:58.997857 | 3d67159d-b730-4a82-8b80-d93aead430c4 ==============================
+[0m07:57:58.997857 [info ] [MainThread]: Running with dbt=1.12.2
+[0m07:57:58.998268 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'use_experimental_parser': 'False', 'log_path': 'logs', 'partial_parse': 'True', 'profiles_dir': '/Users/datadenken/.dbt', 'fail_fast': 'False', 'maximum_seed_size_mib': '1', 'debug': 'False', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'use_colors': 'True', 'printer_width': '80', 'no_print': 'None', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'log_format': 'default', 'empty': 'None', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'version_check': 'True', 'log_cache_events': 'False', 'warn_error': 'None', 'target_path': 'None', 'introspect': 'True'}
+[0m07:57:59.009588 [info ] [MainThread]: dbt version: 1.12.2
+[0m07:57:59.010022 [info ] [MainThread]: python version: 3.13.13
+[0m07:57:59.010251 [info ] [MainThread]: python path: /opt/homebrew/Caskroom/miniforge/base/bin/python3.13
+[0m07:57:59.010423 [info ] [MainThread]: os info: macOS-26.5.2-arm64-arm-64bit-Mach-O
+[0m07:57:59.011886 [info ] [MainThread]: target not specified in profile 'bag', using 'default'
+[0m07:57:59.014609 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.postgres'
+[0m07:57:59.015584 [info ] [MainThread]: target not specified in profile 'hackathon', using 'default'
+[0m07:57:59.016830 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.duckdb'
+[0m07:57:59.017902 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.duckdb'
+[0m07:57:59.018228 [info ] [MainThread]: Using profiles dir at /Users/datadenken/.dbt
+[0m07:57:59.018407 [info ] [MainThread]: Using profiles.yml file at /Users/datadenken/.dbt/profiles.yml
+[0m07:57:59.018566 [info ] [MainThread]: Using dbt_project.yml file at /Users/datadenken/Documents/GitHub/dbt-bag/dbt_project.yml
+[0m07:57:59.018739 [info ] [MainThread]: Configuration:
+[0m07:57:59.019013 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m07:57:59.019218 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m07:57:59.019383 [info ] [MainThread]: Required dependencies:
+[0m07:57:59.019628 [debug] [MainThread]: Executing "git --help"
+[0m07:57:59.040558 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m07:57:59.041671 [debug] [MainThread]: STDERR: "b''"
+[0m07:57:59.041901 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m07:57:59.042097 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m07:57:59.042348 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m07:57:59.042523 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  The profile 'bag' does not have a target named 'default'. The valid target names for this profile are:
+   - dev
+
+Runtime Error
+  Credentials in profile "bag_postgres", target "dev" invalid: Runtime Error
+    Could not find adapter type postgres!
+
+Runtime Error
+  The profile 'hackathon' does not have a target named 'default'. The valid target names for this profile are:
+   - dev
+
+Runtime Error
+  Credentials in profile "test", target "dev" invalid: Runtime Error
+    Could not find adapter type duckdb!
+
+Runtime Error
+  Credentials in profile "bag_duckdb", target "dev" invalid: Runtime Error
+    Could not find adapter type duckdb!
+
+
+[0m07:57:59.042700 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </Users/datadenken/Documents/GitHub/dbt-bag/dbt_project.yml> not found
+
+[0m07:57:59.045398 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.10769375, "process_in_blocks": "0", "process_kernel_time": 0.174076, "process_mem_max_rss": "128352256", "process_out_blocks": "0", "process_user_time": 0.904588}
+[0m07:57:59.045785 [debug] [MainThread]: Command `dbt debug` failed at 07:57:59.045720 after 0.11 seconds
+[0m07:57:59.046083 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119dd8e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119db0950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119d578a0>]}
+[0m07:57:59.046336 [debug] [MainThread]: Flushing usage events
+[0m07:57:59.573131 [debug] [MainThread]: An error was encountered while trying to flush usage events
